@@ -69,10 +69,18 @@
         box-sizing: border-box;
       }
 
+      :root {
+        --ghost-white: #f8f7ff;
+        --cinnamon-wood: #b07156;
+        --glaucous: #6987c9;
+        --mauve-shadow: #59364B;
+        --cinnabar: #f24236;
+      }
+
       body {
         font-family: "Ronzino", Arial, sans-serif;
         line-height: 1.5;
-        background-color: #f8f7ff;
+        background-color: var(--ghost-white);
         color: #000;
         transition: background-color 0.3s ease, color 0.3s ease;
         overflow: hidden;
@@ -92,13 +100,13 @@
         flex-shrink: 0;
         display: flex;
         flex-direction: column;
-        justify-content: center;
+        justify-content: flex-start;
       }
 
       .left-column h1 {
         font-size: 16px;
         font-weight: 400;
-        margin-bottom: 12px;
+        margin-bottom: 24px;
         line-height: 1.5;
       }
 
@@ -109,6 +117,27 @@
         font-size: 13px;
         line-height: 1.5;
         transition: text-decoration 0.2s ease;
+      }
+
+      .left-column nav a::after {
+        content: '';
+        display: inline-block;
+        width: 12px;
+        height: 12px;
+        margin-left: 4px;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M7 17L17 7'%3E%3C/path%3E%3Cpath d='M7 7h10v10'%3E%3C/path%3E%3C/svg%3E");
+        background-size: contain;
+        background-repeat: no-repeat;
+        vertical-align: baseline;
+        transition: background-image 0.3s ease;
+      }
+
+      /* White icons on flood states */
+      body.flood-1 .left-column nav a::after,
+      body.flood-2 .left-column nav a::after,
+      body.flood-3 .left-column nav a::after,
+      body.flood-4 .left-column nav a::after {
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M7 17L17 7'%3E%3C/path%3E%3Cpath d='M7 7h10v10'%3E%3C/path%3E%3C/svg%3E");
       }
 
       .left-column nav a:hover {
@@ -124,20 +153,41 @@
       }
 
       .right-column p {
-        margin-bottom: 1.5em;
+        margin-bottom: 16px;
         font-size: 16px;
         line-height: 1.5;
       }
 
-      .footer {
-        margin-top: 40px;
-        font-size: 10px;
+      .right-column .footer {
+        margin-top: 32px;
+        font-size: 13px;
         line-height: 1.5;
       }
 
       .footer a {
         color: inherit;
         text-decoration: underline;
+      }
+
+      .footer a[target="_blank"]::after {
+        content: '';
+        display: inline-block;
+        width: 10px;
+        height: 10px;
+        margin-left: 3px;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M7 17L17 7'%3E%3C/path%3E%3Cpath d='M7 7h10v10'%3E%3C/path%3E%3C/svg%3E");
+        background-size: contain;
+        background-repeat: no-repeat;
+        vertical-align: baseline;
+        transition: background-image 0.3s ease;
+      }
+
+      /* White icons in footer on flood states */
+      body.flood-1 .footer a[target="_blank"]::after,
+      body.flood-2 .footer a[target="_blank"]::after,
+      body.flood-3 .footer a[target="_blank"]::after,
+      body.flood-4 .footer a[target="_blank"]::after {
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M7 17L17 7'%3E%3C/path%3E%3Cpath d='M7 7h10v10'%3E%3C/path%3E%3C/svg%3E");
       }
 
       .footer a:hover {
@@ -148,26 +198,87 @@
       .trigger {
         text-decoration: underline;
         cursor: pointer;
+        position: relative;
+      }
+
+      /* Hover images */
+      .trigger[data-image]::after {
+        content: '';
+        position: fixed;
+        width: 315px;
+        height: 315px;
+        background-size: cover;
+        background-position: center;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.2s ease;
+        z-index: 100;
+      }
+
+      .trigger[data-image="me"]::after {
+        background-image: url('me-on-blue.png');
+        top: 80px;
+        left: 100px;
+      }
+
+      .trigger[data-image]:hover::after {
+        opacity: 1;
+      }
+
+      /* Tooltip box - margin notes style */
+      .tooltip-box {
+        position: fixed;
+        color: #fff;
+        font-family: "Ronzino", Arial, sans-serif;
+        font-size: 16px;
+        font-weight: 500;
+        font-style: italic;
+        line-height: 1.5;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.2s ease;
+        z-index: 101;
+        max-width: 320px;
+      }
+
+      .tooltip-box p {
+        margin-bottom: 16px;
+        font-size: 16px;
+        line-height: 1.5;
+      }
+
+      .tooltip-box p:last-child {
+        margin-bottom: 0;
+      }
+
+      /* Position in left margin */
+      #management-tooltip {
+        top: 280px;
+        left: 60px;
+      }
+
+      .tooltip-box.show {
+        opacity: 1;
       }
 
       /* Color flood states */
       body.flood-1 {
-        background-color: #b07156;
+        background-color: var(--cinnamon-wood);
         color: #fff;
       }
 
       body.flood-2 {
-        background-color: #6987c9;
+        background-color: var(--glaucous);
         color: #fff;
       }
 
       body.flood-3 {
-        background-color: #482c3d;
+        background-color: var(--mauve-shadow);
         color: #fff;
       }
 
       body.flood-4 {
-        background-color: #f24236;
+        background-color: var(--cinnabar);
         color: #fff;
       }
 
@@ -177,6 +288,55 @@
       body.flood-3 .footer,
       body.flood-4 .footer {
         color: #fff;
+      }
+
+      /* Mobile styles */
+      @media (max-width: 768px) {
+        body {
+          overflow: auto;
+          height: auto;
+        }
+
+        .container {
+          flex-direction: column;
+          padding: 40px 24px;
+          gap: 40px;
+          height: auto;
+        }
+
+        .left-column {
+          width: 100%;
+        }
+
+        .left-column h1 {
+          margin-bottom: 16px;
+        }
+
+        .right-column {
+          max-width: 100%;
+        }
+
+        /* Disable color floods on mobile */
+        .trigger {
+          text-decoration: underline;
+          cursor: default;
+          pointer-events: none;
+        }
+
+        body.flood-1,
+        body.flood-2,
+        body.flood-3,
+        body.flood-4 {
+          background-color: var(--ghost-white);
+          color: #000;
+        }
+
+        body.flood-1 .footer,
+        body.flood-2 .footer,
+        body.flood-3 .footer,
+        body.flood-4 .footer {
+          color: inherit;
+        }
       }
     </style>
   </head>
@@ -194,11 +354,7 @@
       <!-- Right column -->
       <main class="right-column">
         <p>
-          Hi, I'm <span class="trigger" data-flood="1">Stefanie Fiore</span>.
-        </p>
-
-        <p>
-          I'm a delivery manager based in Toronto, Canada. I bring clarity,
+          Hi, I'm <span class="trigger" data-flood="1" data-image="me">Stefanie Fiore</span>. I'm a delivery manager based in Toronto, Canada. I bring clarity,
           structure, and alignment to complex work so teams can deliver
           meaningful results.
         </p>
@@ -218,13 +374,14 @@
         </p>
 
         <p>
-          When I'm not at work, you can find me with my <span class="trigger" data-flood="4">cat on my lap</span>. I
+          When I'm not at work, you can find me with <span class="trigger" data-flood="4">my cat</span> on my lap. I
           designed and built this website because I like learning new things.
         </p>
 
         <p class="footer">
-          Made with ♥ by me (and Claude). Hosted on Netlify. Set in Ronzino by
-          <a href="https://www.collletttivo.it/" target="_blank">Collletttivo</a>. © <span id="year"></span> Stefanie Fiore
+          Made with ♥ by me (and Claude).<br>
+          Hosted on Netlify. Set in Ronzino by <a href="https://www.collletttivo.it/" target="_blank">Collletttivo</a>.<br>
+          © <span id="year"></span> Stefanie Fiore
         </p>
       </main>
     </div>
