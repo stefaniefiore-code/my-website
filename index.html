@@ -3,11 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>My Website</title>
+    <title>Stefanie Fiore</title>
 
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="favicon.svg" />
-
     <style>
       /* Ronzino Regular */
       @font-face {
@@ -62,21 +61,191 @@
         font-weight: 700;
         font-style: italic;
       }
+
+      /* Reset and base styles */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
       body {
         font-family: "Ronzino", Arial, sans-serif;
-        max-width: 800px;
-        margin: 0 auto;
-        padding: 20px;
-        line-height: 1.6;
+        line-height: 1.5;
+        background-color: #f8f7ff;
+        color: #000;
+        transition: background-color 0.3s ease, color 0.3s ease;
+        overflow: hidden;
+        height: 100vh;
+      }
+
+      .container {
+        display: flex;
+        height: 100vh;
+        padding: 100px 120px;
+        gap: 80px;
+      }
+
+      /* Left column */
+      .left-column {
+        width: 380px;
+        flex-shrink: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+
+      .left-column h1 {
+        font-size: 16px;
+        font-weight: 400;
+        margin-bottom: 12px;
+        line-height: 1.5;
+      }
+
+      .left-column nav a {
+        display: block;
+        color: inherit;
+        text-decoration: underline;
+        font-size: 13px;
+        line-height: 1.5;
+        transition: text-decoration 0.2s ease;
+      }
+
+      .left-column nav a:hover {
+        text-decoration: none;
+      }
+
+      /* Right column */
+      .right-column {
+        max-width: 580px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+
+      .right-column p {
+        margin-bottom: 1.5em;
+        font-size: 16px;
+        line-height: 1.5;
+      }
+
+      .footer {
+        margin-top: 40px;
+        font-size: 10px;
+        line-height: 1.5;
+      }
+
+      .footer a {
+        color: inherit;
+        text-decoration: underline;
+      }
+
+      .footer a:hover {
+        text-decoration: none;
+      }
+
+      /* Hover triggers - underlined and interactive */
+      .trigger {
+        text-decoration: underline;
+        cursor: pointer;
+      }
+
+      /* Color flood states */
+      body.flood-1 {
+        background-color: #b07156;
+        color: #fff;
+      }
+
+      body.flood-2 {
+        background-color: #6987c9;
+        color: #fff;
+      }
+
+      body.flood-3 {
+        background-color: #482c3d;
+        color: #fff;
+      }
+
+      body.flood-4 {
+        background-color: #f24236;
+        color: #fff;
+      }
+
+      /* Make footer white in all flood states */
+      body.flood-1 .footer,
+      body.flood-2 .footer,
+      body.flood-3 .footer,
+      body.flood-4 .footer {
+        color: #fff;
       }
     </style>
   </head>
   <body>
-    <h1>Welcome to My Website</h1>
-    <p>
-      This is my first website deployed through GitHub and Netlify! And it
-      auto-updates! 🎉
-    </p>
-    <p>I'm learning web development workflows.</p>
+    <div class="container">
+      <!-- Left column -->
+      <aside class="left-column">
+        <h1>Stefanie Fiore</h1>
+        <nav>
+          <a href="https://www.linkedin.com/in/stefaniefiore/" target="_blank">LinkedIn</a>
+          <a href="mailto:stefaniefiore@gmail.com">Email</a>
+        </nav>
+      </aside>
+
+      <!-- Right column -->
+      <main class="right-column">
+        <p>
+          Hi, I'm <span class="trigger" data-flood="1">Stefanie Fiore</span>.
+        </p>
+
+        <p>
+          I'm a delivery manager based in Toronto, Canada. I bring clarity,
+          structure, and alignment to complex work so teams can deliver
+          meaningful results.
+        </p>
+
+        <p>
+          In a past life, I graduated from Toronto Metropolitan University with
+          a Bachelor of Fine Arts in <span class="trigger" data-flood="2">Image Arts</span>. Somewhere between the
+          darkroom and critiques, I learned that constraint breeds creativity,
+          and finding clarity from complexity is its own kind of craft.
+        </p>
+
+        <p>
+          I've since completed a Masters of Science in <span class="trigger" data-flood="3">Management</span> at the
+          University of Illinois Urbana-Champaign, where I deepened my
+          understanding of leadership and organizational behaviour by connecting
+          theory to my own real-world experience.
+        </p>
+
+        <p>
+          When I'm not at work, you can find me with my <span class="trigger" data-flood="4">cat on my lap</span>. I
+          designed and built this website because I like learning new things.
+        </p>
+
+        <p class="footer">
+          Made with ♥ by me (and Claude). Hosted on Netlify. Set in Ronzino by
+          <a href="https://www.collletttivo.it/" target="_blank">Collletttivo</a>. © <span id="year"></span> Stefanie Fiore
+        </p>
+      </main>
+    </div>
+
+    <script>
+      // Auto-update year
+      document.getElementById('year').textContent = new Date().getFullYear();
+
+      // Get all trigger elements
+      const triggers = document.querySelectorAll('.trigger');
+
+      triggers.forEach(trigger => {
+        trigger.addEventListener('mouseenter', function() {
+          const floodClass = 'flood-' + this.dataset.flood;
+          document.body.className = floodClass;
+        });
+
+        trigger.addEventListener('mouseleave', function() {
+          document.body.className = '';
+        });
+      });
+    </script>
   </body>
 </html>
