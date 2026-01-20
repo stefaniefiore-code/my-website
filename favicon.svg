@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <style>
+    .petal { fill: #6bb8e0; }
+    .center { fill: #4a1c2a; }
+  </style>
+  <!-- Petals -->
+  <circle class="petal" cx="50" cy="20" r="18"/>
+  <circle class="petal" cx="80" cy="40" r="18"/>
+  <circle class="petal" cx="70" cy="75" r="18"/>
+  <circle class="petal" cx="30" cy="75" r="18"/>
+  <circle class="petal" cx="20" cy="40" r="18"/>
+  <!-- Center -->
+  <circle class="center" cx="50" cy="50" r="15"/>
+</svg>

@@ -4,22 +4,79 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>My Website</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+
     <style>
+      /* Ronzino Regular */
+      @font-face {
+        font-family: "Ronzino";
+        src: url("fonts/Ronzino-Regular.woff2") format("woff2"),
+          url("fonts/Ronzino-Regular.woff") format("woff");
+        font-weight: 400;
+        font-style: normal;
+      }
+
+      /* Ronzino Medium */
+      @font-face {
+        font-family: "Ronzino";
+        src: url("fonts/Ronzino-Medium.woff2") format("woff2"),
+          url("fonts/Ronzino-Medium.woff") format("woff");
+        font-weight: 500;
+        font-style: normal;
+      }
+
+      /* Ronzino Bold */
+      @font-face {
+        font-family: "Ronzino";
+        src: url("fonts/Ronzino-Bold.woff2") format("woff2"),
+          url("fonts/Ronzino-Bold.woff") format("woff");
+        font-weight: 700;
+        font-style: normal;
+      }
+
+      /* Ronzino Oblique */
+      @font-face {
+        font-family: "Ronzino";
+        src: url("fonts/Ronzino-Oblique.woff2") format("woff2"),
+          url("fonts/Ronzino-Oblique.woff") format("woff");
+        font-weight: 400;
+        font-style: italic;
+      }
+
+      /* Ronzino Medium Oblique */
+      @font-face {
+        font-family: "Ronzino";
+        src: url("fonts/Ronzino-MediumOblique.woff2") format("woff2"),
+          url("fonts/Ronzino-MediumOblique.woff") format("woff");
+        font-weight: 500;
+        font-style: italic;
+      }
+
+      /* Ronzino Bold Oblique */
+      @font-face {
+        font-family: "Ronzino";
+        src: url("fonts/Ronzino-BoldOblique.woff2") format("woff2"),
+          url("fonts/Ronzino-BoldOblique.woff") format("woff");
+        font-weight: 700;
+        font-style: italic;
+      }
       body {
-        font-family: Arial, sans-serif;
+        font-family: "Ronzino", Arial, sans-serif;
         max-width: 800px;
         margin: 0 auto;
         padding: 20px;
         line-height: 1.6;
       }
-      h1 {
-        color: #333;
-      }
     </style>
   </head>
   <body>
     <h1>Welcome to My Website</h1>
-    <p>This is my first website deployed through GitHub and Netlify! And it auto-updates!🎉 </p>
+    <p>
+      This is my first website deployed through GitHub and Netlify! And it
+      auto-updates! 🎉
+    </p>
     <p>I'm learning web development workflows.</p>
->
+  </body>
 </html>
