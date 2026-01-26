@@ -364,9 +364,14 @@
 
         /* Disable color floods on mobile */
         .trigger {
-          text-decoration: underline;
           cursor: default;
           pointer-events: none;
+        }
+
+        /* Remove underlines from flood-only triggers on mobile */
+        .trigger[data-flood="1"],
+        .trigger[data-flood="4"] {
+          text-decoration: none;
         }
 
         body.flood-1,
