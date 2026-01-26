@@ -4,6 +4,21 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Stefanie Fiore</title>
+    <meta name="description" content="Software delivery manager based in Toronto. I bring clarity, structure, and alignment to complex work." />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://legendary-creponne-932ba4.netlify.app/" />
+    <meta property="og:title" content="Stefanie Fiore" />
+    <meta property="og:description" content="Software delivery manager based in Toronto. I bring clarity, structure, and alignment to complex work." />
+    <meta property="og:image" content="https://legendary-creponne-932ba4.netlify.app/og-image.png" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://legendary-creponne-932ba4.netlify.app/" />
+    <meta property="twitter:title" content="Stefanie Fiore" />
+    <meta property="twitter:description" content="Software delivery manager based in Toronto. I bring clarity, structure, and alignment to complex work." />
+    <meta property="twitter:image" content="https://legendary-creponne-932ba4.netlify.app/og-image.png" />
 
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="favicon.svg" />
@@ -75,6 +90,7 @@
         --glaucous: #6987c9;
         --mauve-shadow: #59364B;
         --cinnabar: #f24236;
+        --collletttivo-green: #9DAB49;
       }
 
       body {
@@ -136,7 +152,8 @@
       body.flood-1 .left-column nav a::after,
       body.flood-2 .left-column nav a::after,
       body.flood-3 .left-column nav a::after,
-      body.flood-4 .left-column nav a::after {
+      body.flood-4 .left-column nav a::after,
+      body.flood-5 .left-column nav a::after {
         background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M7 17L17 7'%3E%3C/path%3E%3Cpath d='M7 7h10v10'%3E%3C/path%3E%3C/svg%3E");
       }
 
@@ -186,7 +203,8 @@
       body.flood-1 .footer a[target="_blank"]::after,
       body.flood-2 .footer a[target="_blank"]::after,
       body.flood-3 .footer a[target="_blank"]::after,
-      body.flood-4 .footer a[target="_blank"]::after {
+      body.flood-4 .footer a[target="_blank"]::after,
+      body.flood-5 .footer a[target="_blank"]::after {
         background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M7 17L17 7'%3E%3C/path%3E%3Cpath d='M7 7h10v10'%3E%3C/path%3E%3C/svg%3E");
       }
 
@@ -222,6 +240,28 @@
       }
 
       .trigger[data-image]:hover::after {
+        opacity: 1;
+      }
+
+      /* Text below photo */
+      .trigger[data-image][data-text]::before {
+        content: attr(data-text);
+        position: fixed;
+        color: #fff;
+        font-size: 16px;
+        line-height: 1.5;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.2s ease;
+        z-index: 100;
+      }
+
+      .trigger[data-image="me"]::before {
+        top: 410px;
+        left: 100px;
+      }
+
+      .trigger[data-image][data-text]:hover::before {
         opacity: 1;
       }
 
@@ -282,11 +322,17 @@
         color: #fff;
       }
 
+      body.flood-5 {
+        background-color: var(--collletttivo-green);
+        color: #fff;
+      }
+
       /* Make footer white in all flood states */
       body.flood-1 .footer,
       body.flood-2 .footer,
       body.flood-3 .footer,
-      body.flood-4 .footer {
+      body.flood-4 .footer,
+      body.flood-5 .footer {
         color: #fff;
       }
 
@@ -326,7 +372,8 @@
         body.flood-1,
         body.flood-2,
         body.flood-3,
-        body.flood-4 {
+        body.flood-4,
+        body.flood-5 {
           background-color: var(--ghost-white);
           color: #000;
         }
@@ -334,7 +381,8 @@
         body.flood-1 .footer,
         body.flood-2 .footer,
         body.flood-3 .footer,
-        body.flood-4 .footer {
+        body.flood-4 .footer,
+        body.flood-5 .footer {
           color: inherit;
         }
       }
@@ -346,28 +394,28 @@
       <aside class="left-column">
         <h1>Stefanie Fiore</h1>
         <nav>
-          <a href="https://www.linkedin.com/in/stefaniefiore/" target="_blank">LinkedIn</a>
-          <a href="mailto:stefaniefiore@gmail.com">Email</a>
+          <a href="https://www.linkedin.com/in/stefaniefiore/" target="_blank" class="trigger" data-flood="2">LinkedIn</a>
+          <a href="#" id="email-link" class="trigger" data-flood="3" title="Click to copy email address">Email</a>
         </nav>
       </aside>
 
       <!-- Right column -->
       <main class="right-column">
         <p>
-          Hi, I'm <span class="trigger" data-flood="1" data-image="me">Stefanie Fiore</span>. I'm a delivery manager based in Toronto, Canada. I bring clarity,
+          Hi, I'm <span class="trigger" data-flood="1" data-image="me" data-text="You can also call me Stef.">Stefanie</span>. I'm a software delivery manager based in Toronto, Canada. I bring clarity,
           structure, and alignment to complex work so teams can deliver
           meaningful results.
         </p>
 
         <p>
           In a past life, I graduated from Toronto Metropolitan University with
-          a Bachelor of Fine Arts in <span class="trigger" data-flood="2">Image Arts</span>. Somewhere between the
+          a Bachelor of Fine Arts in Image Arts. Somewhere between the
           darkroom and critiques, I learned that constraint breeds creativity,
           and finding clarity from complexity is its own kind of craft.
         </p>
 
         <p>
-          I've since completed a Masters of Science in <span class="trigger" data-flood="3">Management</span> at the
+          I've since completed a Masters of Science in Management at the
           University of Illinois Urbana-Champaign, where I deepened my
           understanding of leadership and organizational behaviour by connecting
           theory to my own real-world experience.
@@ -380,7 +428,7 @@
 
         <p class="footer">
           Made with ♥ by me (and Claude).<br>
-          Hosted on Netlify. Set in Ronzino by <a href="https://www.collletttivo.it/" target="_blank">Collletttivo</a>.<br>
+          Hosted on Netlify. Set in Ronzino by <a href="https://www.collletttivo.it/" target="_blank" class="trigger" data-flood="5">Collletttivo</a>.<br>
           © <span id="year"></span> Stefanie Fiore
         </p>
       </main>
@@ -389,6 +437,31 @@
     <script>
       // Auto-update year
       document.getElementById('year').textContent = new Date().getFullYear();
+
+      // Obfuscated email - constructed in JavaScript to prevent scraping
+      const emailLink = document.getElementById('email-link');
+      const user = 'stefaniefiore';
+      const domain = 'gmail.com';
+      const emailAddress = user + '@' + domain;
+
+      // Copy email to clipboard on click
+      emailLink.addEventListener('click', function(e) {
+        e.preventDefault();
+        navigator.clipboard.writeText(emailAddress).then(function() {
+          // Store original text
+          const originalText = emailLink.textContent;
+          // Show confirmation
+          emailLink.textContent = 'Copied!';
+          // Reset after 2 seconds
+          setTimeout(function() {
+            emailLink.textContent = originalText;
+          }, 2000);
+        }).catch(function(err) {
+          // Fallback if clipboard API fails
+          console.error('Could not copy email: ', err);
+          alert('Email: ' + emailAddress);
+        });
+      });
 
       // Get all trigger elements
       const triggers = document.querySelectorAll('.trigger');
