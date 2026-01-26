@@ -1,4 +1,22 @@
 <!DOCTYPE html>
+<!--
+        |\___/|
+        )     (
+       =\     /=
+         )===(
+        /     \
+        |     |
+       /       \
+       \       /
+  _/\_/\__  _/_/\_/\_/\_/\_/\_/\_/\_/\_/\_
+  |  |  |( (  |  |  |  |  |  |  |  |  |  |
+  |  |  | ) ) |  |  |  |  |  |  |  |  |  |
+  |  |  |(_(  |  |  |  |  |  |  |  |  |  |
+  |  |  |  |  |  |  |  |  |  |  |  |  |  |
+  jgs|  |  |  |  |  |  |  |  |  |  |  |  |
+
+  Attempting to code since 1999!
+-->
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -265,6 +283,61 @@
         opacity: 1;
       }
 
+      /* Helium cat images - hidden by default */
+      .helium-image {
+        position: fixed;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.3s ease;
+        z-index: 100;
+      }
+
+      /* Show Helium images on flood-4 (my cat hover) */
+      body.flood-4 .helium-image {
+        opacity: 1;
+      }
+
+      /* Individual positioning for each Helium image - using viewport units for responsiveness */
+      .helium-1 {
+        width: 19vw;
+        min-width: 190px;
+        max-width: 300px;
+        top: 5%;
+        left: 3%;
+      }
+
+      .helium-2 {
+        width: 16vw;
+        min-width: 160px;
+        max-width: 260px;
+        top: 8%;
+        right: -3%; /* Edge crop for messy look */
+      }
+
+      .helium-4 {
+        width: 26vw;
+        min-width: 260px;
+        max-width: 420px;
+        bottom: -8%;
+        right: -3%;
+      }
+
+      .helium-5 {
+        width: 19vw;
+        min-width: 190px;
+        max-width: 300px;
+        bottom: 18%;
+        left: 20%;
+      }
+
+      .helium-6 {
+        width: 26vw;
+        min-width: 260px;
+        max-width: 416px;
+        bottom: -18%;
+        left: 0%;
+      }
+
       /* Tooltip box - margin notes style */
       .tooltip-box {
         position: fixed;
@@ -390,6 +463,11 @@
         body.flood-5 .footer {
           color: inherit;
         }
+
+        /* Hide Helium cat images on mobile - hover effects don't work on touch devices */
+        .helium-image {
+          display: none;
+        }
       }
     </style>
   </head>
@@ -400,7 +478,7 @@
         <h1>Stefanie Fiore</h1>
         <nav>
           <a href="https://www.linkedin.com/in/stefaniefiore/" target="_blank" class="trigger" data-flood="2">LinkedIn</a>
-          <a href="#" id="email-link" class="trigger" data-flood="3" title="Click to copy email address">Email</a>
+          <a href="#" id="email-link" class="trigger" data-flood="3" aria-label="Click to copy email address to clipboard">Email</a>
         </nav>
       </aside>
 
@@ -482,5 +560,12 @@
         });
       });
     </script>
+
+    <!-- Helium cat images -->
+    <img src="1.png" alt="" class="helium-image helium-1">
+    <img src="2.png" alt="" class="helium-image helium-2">
+    <img src="4.png" alt="" class="helium-image helium-4">
+    <img src="5.png" alt="" class="helium-image helium-5">
+    <img src="6.png" alt="" class="helium-image helium-6">
   </body>
 </html>
