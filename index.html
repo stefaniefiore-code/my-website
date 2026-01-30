@@ -297,50 +297,15 @@
         opacity: 1;
       }
 
-      /* Individual positioning for each Helium image - using viewport units for responsiveness */
-      /* Layout boundaries (desktop >768px):
-         - Left column: 120px to 500px (120px padding + 380px width)
-         - Gap: 500px to 580px (80px gap)
-         - Right column: 580px to 1160px (max-width 580px)
-         - Cats positioned to avoid overlapping with text content */
-      .helium-1 {
-        width: 19vw;
-        min-width: 190px;
-        max-width: 110px; /* Constrained to stay within left padding zone */
-        top: 5%;
-        left: 0%;
-      }
-
-      .helium-2 {
-        width: 16vw;
-        min-width: 160px;
-        max-width: 260px;
-        top: 8%;
-        right: -5%; /* More aggressive edge crop to avoid right column */
-      }
-
-      .helium-4 {
-        width: 26vw;
-        min-width: 260px;
-        max-width: 420px;
-        bottom: -10%; /* Pushed further off-screen */
-        right: -5%;
-      }
-
-      .helium-5 {
-        width: 19vw;
-        min-width: 190px;
-        max-width: 115px; /* Constrained to stay within left padding zone */
-        bottom: 15%;
-        left: 2%;
-      }
-
+      /* Helium cat positioning - bottom left corner */
       .helium-6 {
-        width: 26vw;
-        min-width: 260px;
-        max-width: 115px; /* Constrained to stay within left padding zone */
-        bottom: -20%; /* More aggressive crop */
-        left: 0%;
+        width: 25vw; /* Responsive size - scales with viewport */
+        min-width: 300px; /* Minimum size on small screens */
+        max-width: 400px; /* Maximum size on large screens */
+        height: auto;
+        bottom: -9.375vw; /* Responsive bottom position (scales with width) */
+        left: 5vw; /* Responsive left position */
+        transform: rotate(-5deg); /* Tilted 5 degrees to the left */
       }
 
       /* Tooltip box - margin notes style */
@@ -566,11 +531,7 @@
       });
     </script>
 
-    <!-- Helium cat images -->
-    <img src="1.png" alt="" class="helium-image helium-1">
-    <img src="2.png" alt="" class="helium-image helium-2">
-    <img src="4.png" alt="" class="helium-image helium-4">
-    <img src="5.png" alt="" class="helium-image helium-5">
+    <!-- Helium cat image -->
     <img src="6.png" alt="" class="helium-image helium-6">
   </body>
 </html>
