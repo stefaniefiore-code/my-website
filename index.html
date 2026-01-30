@@ -298,12 +298,17 @@
       }
 
       /* Individual positioning for each Helium image - using viewport units for responsiveness */
+      /* Layout boundaries (desktop >768px):
+         - Left column: 120px to 500px (120px padding + 380px width)
+         - Gap: 500px to 580px (80px gap)
+         - Right column: 580px to 1160px (max-width 580px)
+         - Cats positioned to avoid overlapping with text content */
       .helium-1 {
         width: 19vw;
         min-width: 190px;
-        max-width: 300px;
+        max-width: 110px; /* Constrained to stay within left padding zone */
         top: 5%;
-        left: 3%;
+        left: 0%;
       }
 
       .helium-2 {
@@ -311,30 +316,30 @@
         min-width: 160px;
         max-width: 260px;
         top: 8%;
-        right: -3%; /* Edge crop for messy look */
+        right: -5%; /* More aggressive edge crop to avoid right column */
       }
 
       .helium-4 {
         width: 26vw;
         min-width: 260px;
         max-width: 420px;
-        bottom: -8%;
-        right: -3%;
+        bottom: -10%; /* Pushed further off-screen */
+        right: -5%;
       }
 
       .helium-5 {
         width: 19vw;
         min-width: 190px;
-        max-width: 300px;
-        bottom: 18%;
-        left: 20%;
+        max-width: 115px; /* Constrained to stay within left padding zone */
+        bottom: 15%;
+        left: 2%;
       }
 
       .helium-6 {
         width: 26vw;
         min-width: 260px;
-        max-width: 416px;
-        bottom: -18%;
+        max-width: 115px; /* Constrained to stay within left padding zone */
+        bottom: -20%; /* More aggressive crop */
         left: 0%;
       }
 
